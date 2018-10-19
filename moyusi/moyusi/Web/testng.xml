@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="test" parallel="true">
+   <test name="test" preserver-order="true">
+        <classes>
+        <!-- com.feelee.feeleeApp.test.allCaseTest -->
+            <class name="com.feelee.feeleeApp.test.allCaseTest"/>
+        </classes>
+         <listeners>
+            <listener class-name="org.uncommons.reportng.HTMLReporter" />
+            <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+            <listener class-name="testNg.retry.TestngListener"/>
+            <listener class-name="testNg.retry.RetryListener"/>            
+        </listeners>
+        </test>
+</suite> 

@@ -1,0 +1,240 @@
+Remove old SCITE_USERHOME
+Add SCITE_USERHOME to registry
+Tell Windows to Update Enviroment
+Output folder: C:\Users\60418\AppData\Local\AutoIt v3\SciTE
+!!!! SciTE FULL
+Copy to C:\Users\60418\AppData\Local\AutoIt v3\SciTE\abbrev.save.properties
+Delete file: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\abbrev.properties
+Extract: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\abbrev.properties
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\au3abbrev.properties
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\au3.keywords.user.abbreviations.properties
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\au3UserAbbrev.properties
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE
+Skipped: SciTEGlobal.properties
+Skipped: License.txt
+Skipped: luaCOPYRIGHT
+Skipped: SciLexer.dll
+Skipped: SciTE4AutoIt3.chm
+Skipped: SciTE.exe
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\Properties
+Skipped: Embedded.properties
+Skipped: abaqus.properties
+Skipped: ada.properties
+Skipped: asl.properties
+Skipped: asm.properties
+Skipped: asn1.properties
+Skipped: au3.keywords.abbreviations.properties
+Skipped: au3.keywords.properties
+Skipped: au3.pixmap.properties
+Skipped: au3.properties
+Skipped: au3_Old.properties
+Skipped: autoit3wrapper.keywords.properties
+Skipped: ave.properties
+Skipped: avs.properties
+Skipped: baan.properties
+Skipped: bcx.properties
+Skipped: blitzbasic.properties
+Skipped: bullant.properties
+Skipped: caml.properties
+Skipped: cmake.properties
+Skipped: cobol.properties
+Skipped: coffeescript.properties
+Skipped: conf.properties
+Skipped: cpp.properties
+Skipped: csound.properties
+Skipped: css.properties
+Skipped: d.properties
+Skipped: ecl.properties
+Skipped: eiffel.properties
+Skipped: erlang.properties
+Skipped: escript.properties
+Skipped: flagship.properties
+Skipped: forth.properties
+Skipped: fortran.properties
+Skipped: freebasic.properties
+Skipped: gap.properties
+Skipped: haskell.properties
+Skipped: hex.properties
+Skipped: html.properties
+Skipped: inno.properties
+Skipped: json.properties
+Skipped: kix.properties
+Skipped: latex.properties
+Skipped: lisp.properties
+Skipped: lot.properties
+Skipped: lout.properties
+Skipped: lua.properties
+Skipped: matlab.properties
+Skipped: metapost.properties
+Skipped: mmixal.properties
+Skipped: modula3.properties
+Skipped: nimrod.properties
+Skipped: nncrontab.properties
+Skipped: nsis.properties
+Skipped: opal.properties
+Skipped: oscript.properties
+Skipped: others.properties
+Skipped: pascal.properties
+Skipped: perl.properties
+Skipped: pov.properties
+Skipped: powerpro.properties
+Skipped: powershell.properties
+Skipped: ps.properties
+Skipped: purebasic.properties
+Skipped: python.properties
+Skipped: r.properties
+Skipped: rebol.properties
+Skipped: registry.properties
+Skipped: ruby.properties
+Skipped: rust.properties
+Skipped: scriptol.properties
+Skipped: smalltalk.properties
+Skipped: sorcins.properties
+Skipped: specman.properties
+Skipped: spice.properties
+Skipped: sql.properties
+Skipped: tacl.properties
+Skipped: tal.properties
+Skipped: tcl.properties
+Skipped: tex.properties
+Skipped: txt2tags.properties
+Skipped: vb.properties
+Skipped: verilog.properties
+Skipped: vhdl.properties
+Skipped: yaml.properties
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\lua
+Skipped: AutoHScroll.lua
+Skipped: AutoItAutoComplete.lua
+Skipped: AutoItAutoCompletenew.lua
+Skipped: AutoItGotoDefinition.lua
+Skipped: AutoItIndentFix.lua
+Skipped: AutoItPixmap.lua
+Skipped: AutoItTools.lua
+Skipped: AutoItToolsUpd.lua
+Skipped: Class.lua
+Skipped: Common.lua
+Skipped: EdgeMode.lua
+Skipped: LUAAutoComplete.lua
+Skipped: SciTEStartup.lua
+Skipped: SciTE_extras.lua
+Skipped: SmartAutoCompleteHide.lua
+Skipped: Tools.lua
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\PersonalTools.lua
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\SciTEConfig
+Skipped: AbbrevMan.au3
+Skipped: Get_AU3_RegistrySettings.au3
+Skipped: SciteConfig.au3
+Skipped: Scite_Reload_Props.au3
+Skipped: StringSize.au3
+Skipped: UCTMan.au3
+Output folder: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\SciTEConfig
+Skipped: MSDEV.SciTEConfig
+Skipped: MSDEV2.SciTEConfig
+Skipped: Monokai.SciTEConfig
+Skipped: OLD_LCD.SciTEConfig
+Skipped: Twilight.SciTEConfig
+Skipped: _OldSciTE4AutoIt3.SciTEConfig
+Skipped: __SciTE4AutoIt3.SciTEConfig
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE
+Create folder: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\AutoIt v3\SciTE
+Create shortcut: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\AutoIt v3\SciTE\SciTE.lnk
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\api
+Skipped: iface.api
+Skipped: au3.autoit3wrapper.api
+Skipped: au3.api
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\au3.user.calltips.api
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\au3.UserUdfs.properties
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\au3Stripper
+Create folder: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\Au3Stripper
+Skipped: AU3Stripper.exe
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\au3Stripper\au3Stripper.dat
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\Tidy
+Skipped: Tidy.exe
+Create folder: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\Tidy
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\tidy\TidyV2_Example.ini
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\tidy\UserFunctions.txt
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\AutoIt3Wrapper
+Skipped: AutoIt3Wrapper.au3
+Skipped: Directives.au3
+Create folder: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\AutoIt3Wrapper
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\AutoIt3Wrapper\AutoIt3Wrapper.ini.example
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\CodeWizard
+Skipped: CodeWizard.au3
+Skipped: CodeWizard.chm
+Skipped: ReadMe.txt
+Create folder: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\CodeWizard
+Skipped: C:\Users\60418\AppData\Local\AutoIt v3\SciTE\CodeWizard\colors.ini
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\Koda
+Skipped: FD.chm
+Skipped: FD.exe
+Skipped: history.txt
+Skipped: styles.xml
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\Koda\Templates
+Skipped: About Box.kxf
+Skipped: Dialog with help (vertical).kxf
+Skipped: Dialog with help.kxf
+Skipped: Dual ListBox.kxf
+Skipped: Form.kxf
+Skipped: Password Dialog.kxf
+Skipped: Standard Dialog (vertical).kxf
+Skipped: Standard Dialog.kxf
+Skipped: Tabbed Pages.kxf
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\Koda\Language
+Skipped: help_eng.chm
+Skipped: lang_bg.xml
+Skipped: lang_bra.xml
+Skipped: lang_cze.xml
+Skipped: lang_fra.xml
+Skipped: lang_ger.xml
+Skipped: lang_ita.xml
+Skipped: lang_pol.xml
+Skipped: lang_rus.xml
+Skipped: lang_spa.xml
+Skipped: lang_zhcn.xml
+Skipped: lang_zhtw.xml
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\SciTE Jump
+Skipped: HelpFile.chm
+Skipped: License.txt
+Skipped: Monitor.au3
+Skipped: Readme.txt
+Skipped: SciTE Jump.au3
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\SciTE Jump\Includes
+Skipped: WM_COPYDATA.au3
+Skipped: _CRC32ForFile.au3
+Skipped: _Functions.au3
+Skipped: _GUIDisable.au3
+Skipped: _Language.au3
+Skipped: _PreProcessor.au3
+Skipped: _SciTE.au3
+Skipped: _SciTE_GetSciTEDefaultHome.au3
+Skipped: _SciTE_Send_Command.au3
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\SciTE Jump\Languages
+Skipped: Dutch.lng
+Skipped: English.lng
+Skipped: Finnish.lng
+Skipped: French.lng
+Skipped: German.lng
+Skipped: Greek.lng
+Skipped: Hungarian.lng
+Skipped: Italian.lng
+Skipped: LangChanges.txt
+Skipped: Persian.lng
+Skipped: Polish.lng
+Skipped: Romanian.lng
+Skipped: Russian.lng
+Skipped: Translate.txt
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\Defs
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\Defs\Production
+Skipped: au3.keywords.properties
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\Defs\Production\api
+Skipped: au3.api
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\Defs\beta
+Skipped: au3.keywords.properties
+Output folder: F:\Dayu\autolt\AutoIt3\SciTE\Defs\beta\api
+Skipped: au3.api
+Create shortcut: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\AutoIt v3\SciTE\Website.lnk
+Create shortcut: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\AutoIt v3\SciTE\Uninstall.lnk
+Created uninstaller: F:\Dayu\autolt\AutoIt3\SciTE\uninst.exe
+===== Update settings in SciTEUser.properties. ===================
+Execute: "F:\Dayu\autolt\AutoIt3\SciTE\..\AutoIt3.exe" "F:\Dayu\autolt\AutoIt3\SciTE\SciTEConfig\SciTEConfig.au3" /Installer
+===== Install finished. ==========================================
