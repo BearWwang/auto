@@ -23,7 +23,7 @@ public class allCaseTest {
   static Testr test1=new Testr();//读取环境配置信息：test.preperites,
   //static DesiredCapabilities capabilities;
   File allTest, singleTest;
-  //private static Logger logger = Logger.getLogger(allCaseTest.class);  
+ // private static Logger logger = Logger.getLogger(allCaseTest.class);  
 @BeforeMethod
 public void setUp() throws Exception {
 	           Testr.testmethod();
@@ -33,9 +33,9 @@ public void setUp() throws Exception {
 	        option.addArguments("disable-infobars");
               driver = new ChromeDriver(option);
               // 操作浏览器大小, 最大化
-            driver.manage().window().maximize();
+       //  driver.manage().window().maximize();
               //自定义浏览器尺寸
-           //     driver.manage().window().setSize(new Dimension(1060,800));
+              driver.manage().window().setSize(new Dimension(1280,800));
               driver.get(Testr.str7); 
 	     }  
 @Test
@@ -76,7 +76,7 @@ public  void test2() throws FileNotFoundException, IOException, InterruptedExcep
 }
   @AfterMethod
 public void tearDown() throws Exception {
-   //driver.quit();
+   driver.quit();
     String verificationErrorString = verificationErrors.toString();
     if (!"".equals(verificationErrorString)) {
       Assert.fail(verificationErrorString);

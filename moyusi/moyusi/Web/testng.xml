@@ -2,8 +2,7 @@
 <suite name="test" parallel="true">
    <test name="test" preserver-order="true">
         <classes>
-        <!-- com.feelee.feeleeApp.test.allCaseTest -->
-            <class name="com.feelee.feeleeApp.test.allCaseTest"/>
+            <class name="com.Dayu.www.allCaseTest"/>
         </classes>
          <listeners>
             <listener class-name="org.uncommons.reportng.HTMLReporter" />

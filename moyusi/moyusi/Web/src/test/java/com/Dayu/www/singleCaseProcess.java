@@ -16,7 +16,6 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.time.DateUtils;
-import org.apache.poi.ss.formula.functions.Value;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -354,13 +353,13 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);// 最多等待时间由maxWaitTime指定
 							if (value[2].equals(""))
 							{	
+								wait.until(ExpectedConditions.elementToBeClickable((By.xpath(value[1]))));
 								driver.findElement(By.xpath(value[1])).click();
 							}
 							else
 							{
 								wait.until(ExpectedConditions.elementToBeClickable((By.xpath(value[1]))));
-								List<WebElement> bot = driver.findElements(By.xpath(value[1]));	
-								//System.out.println("~~~~~~~~~~~~~~~~~~~"+bot.get(Integer.parseInt(value[2])));
+								List<WebElement> bot = driver.findElements(By.xpath(value[1]));
 									bot.get(Integer.parseInt(value[2])).click();			
 								}	}
 						catch(Exception e)
@@ -382,6 +381,7 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 								wait.until(ExpectedConditions.elementToBeClickable((By.className(value[1]))));
 								List<WebElement> 	bot = driver.findElements(By.className(value[1]));
 								bot.get(Integer.parseInt(value[2])).click();
+
 							}
 						}
 						catch(Exception e)
@@ -447,6 +447,28 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						}
 						excel.writeResult(value[4], resultMessage);
 						break;
+					case"xpath_clear":
+						try
+						{
+							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定
+							wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(value[1])));			 
+							if(value[2].equals("")){
+								driver.findElement(By.xpath(value[1])).clear();
+								
+							}
+							else{
+								wait.until(ExpectedConditions.elementToBeClickable(By.xpath(value[1])));
+								List<WebElement> bot = driver.findElements(By.xpath(value[1]));	
+								bot.get(Integer.parseInt(value[2])).clear();
+							}	
+							
+						}catch (Exception e) {
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;
+						
 					case "上传图片":
 						try
 						{
@@ -750,7 +772,30 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 							caseExecResult="failure";
 						}
 						excel.writeCheckResult(value[4], resultMessage, checkResult, actualValue, expectedValue);
-						break;						
+						break;	
+					case "检查点_class":
+						try
+						{
+						WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定
+						wait.until(ExpectedConditions.presenceOfElementLocated(By.className(value[1])));
+						 actualValue = driver.findElement(By.className(value[1])).getAttribute("className");
+						 expectedValue  = value[5];
+						checkResult=warpingFunctions.verifyTest(actualValue,expectedValue);
+						if(checkResult=="fail")
+							{
+								FileUtil.takeTakesScreenshot(driver);
+								resultMessage = FileUtil.filePath;
+								caseExecResult="fail";
+							 }
+						 }
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							checkResult = "failure";
+							caseExecResult="failure";
+						}
+						excel.writeCheckResult(value[4], resultMessage, checkResult, actualValue, expectedValue);
+						break;				
 					case "检查点_id":
 						try
 						{  // 新改技术
@@ -1358,30 +1403,7 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						}
 						excel.writeResult(value[4], resultMessage);
 						break;					
-					case "检查点_class":
-						try
-						{
-						WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定
-						wait.until(ExpectedConditions.presenceOfElementLocated(By.className(value[1])));
-						 actualValue = driver.findElement(By.className(value[1])).getAttribute("className");
-					//	 System.out.println("~~~~~~~~~~~~~~~~"+driver.findElement(By.className(value[1])).getAttribute("className"));
-						 expectedValue  = value[5];
-						checkResult=warpingFunctions.verifyTest(actualValue,expectedValue);
-						if(checkResult=="fail")
-							{
-								FileUtil.takeTakesScreenshot(driver);
-								resultMessage = FileUtil.filePath;
-								caseExecResult="fail";
-							 }
-						 }
-						catch(Exception e)
-						{
-							resultMessage=e.getMessage();
-							checkResult = "failure";
-							caseExecResult="failure";
-						}
-						excel.writeCheckResult(value[4], resultMessage, checkResult, actualValue, expectedValue);
-						break;						
+						
 					case "检查点_xpath对比":
 						try {							
 							if (value[2].equals("")) {
@@ -1391,7 +1413,7 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 							actualValue = bot.get(Integer.parseInt(value[2])).getText();
 							}							
 							expectedValue  = value[5];
-							System.out.println("文本值~~~~~~~~~~~~~~~~~~~~"+actualValue);
+						//	System.out.println("文本值~~~~~~~~~~~~~~~~~~~~"+actualValue);
 							checkResult=warpingFunctions.verifyContainTest(actualValue,expectedValue,"y");
 							if(checkResult=="fail")
 								{
