@@ -27,8 +27,8 @@ public static void testmethod() throws FileNotFoundException, IOException
 	  Properties pps = new Properties();
 	  //本地
     pps.load(new FileInputStream("Test.properties"));
-      //测试
-    // pps.load(new FileInputStream("TestTx.properties"));
+      //压力机
+   //  pps.load(new FileInputStream("Press.properties"));
       Enumeration enum1 = pps.propertyNames();//得到配置文件的名字
       while(enum1.hasMoreElements()) {
           String strKey = (String) enum1.nextElement();
