@@ -105,7 +105,8 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 				else //否则清空错误日志，用例步骤顺序执行
 				{
 					resultMessage = "";		
-					int x = 0;
+					SimpleDateFormat dateFormat = new SimpleDateFormat("HHmmss");
+					Rand = new  Random().nextInt(99999999); 
 					switch (value[0]){					
 					case "F12":
 						try
@@ -483,6 +484,28 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						}
 						excel.writeResult(value[4], resultMessage);
 						break;
+					case "输入_xpaths手机号":
+						try
+						{ 
+							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定
+							wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(value[1])));
+							if(value[2].equals("")){
+								driver.findElement(By.xpath(value[1])).clear();
+								driver.findElement(By.xpath(value[1])).sendKeys(value[3]+Rand);
+							}
+							else{
+								wait.until(ExpectedConditions.elementToBeClickable(By.xpath(value[1])));
+								List<WebElement> bot = driver.findElements(By.xpath(value[1]));	
+								bot.get(Integer.parseInt(value[2])).sendKeys(value[3]+Rand);
+							}
+						}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;
 						
 					case "输入_xpath":
 						try
@@ -531,14 +554,37 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						excel.writeResult(value[4], resultMessage);
 						break;
 					case "输入_classname门店":
+						//新增门店名称+当前时间”时分秒“
 						try
-						{  
-							SimpleDateFormat dateFormat = new SimpleDateFormat("HHmmss");
+						{  							
 							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定				
 						if(value[2].equals("")){
 							wait.until(ExpectedConditions.elementToBeClickable(By.className(value[1])));
 							driver.findElement(By.className(value[1])).clear();
-							driver.findElement(By.className(value[1])).sendKeys(value[3]);
+							driver.findElement(By.className(value[1])).sendKeys(value[3]+"-"+dateFormat.format(new Date()));
+						}
+						else{
+							wait.until(ExpectedConditions.elementToBeClickable((By.className(value[1]))));
+							List<WebElement> 	bot = driver.findElements(By.className(value[1]));
+							bot.get(Integer.parseInt(value[2])).clear();
+							bot.get(Integer.parseInt(value[2])).sendKeys(value[3]+"-"+dateFormat.format(new Date()));
+						}}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;
+					case "输入_classname名称":
+						//新增门店名称+当前时间”时分秒“
+						try
+						{  							
+							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定				
+						if(value[2].equals("")){
+							wait.until(ExpectedConditions.elementToBeClickable(By.className(value[1])));
+							driver.findElement(By.className(value[1])).clear();
+							driver.findElement(By.className(value[1])).sendKeys(value[3]+"-"+dateFormat.format(new Date()));
 						}
 						else{
 							wait.until(ExpectedConditions.elementToBeClickable((By.className(value[1]))));
@@ -577,7 +623,8 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						break;
 					case "输入_classname时间":
 						try
-						{ 							
+						{ 	
+							//excel 时间格式化+计算机时间元年 
 							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定	
 							//获取时间原点 1900年
 							Calendar calendar = new GregorianCalendar(1900,0,-1);  
@@ -585,17 +632,17 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 							//原点 + 预计经历天数
 							Date dd = DateUtils.addDays(d,Integer.valueOf(value[3]));  	
 							//时间格式化
-							SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");																	
+							SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");																	
 						if(value[2].equals("")){
 							wait.until(ExpectedConditions.elementToBeClickable(By.className(value[1])));
 							driver.findElement(By.className(value[1])).clear();							
-							driver.findElement(By.className(value[1])).sendKeys(dateFormat.format(dd));
+							driver.findElement(By.className(value[1])).sendKeys(dateFormat1.format(dd));
 						}
 						else{
 							wait.until(ExpectedConditions.elementToBeClickable((By.className(value[1]))));
 							List<WebElement> 	bot = driver.findElements(By.className(value[1]));
 							bot.get(Integer.parseInt(value[2])).clear();							
-							bot.get(Integer.parseInt(value[2])).sendKeys(dateFormat.format(dd));
+							bot.get(Integer.parseInt(value[2])).sendKeys(dateFormat1.format(dd));
 						}}
 						catch(Exception e)
 						{
@@ -608,7 +655,7 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						try
 						{
 							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定				
-							Rand = new  Random().nextInt(9999); 
+							
 							if(value[2].equals("")){
 							wait.until(ExpectedConditions.elementToBeClickable(By.className(value[1])));
 							driver.findElement(By.className(value[1])).clear();							

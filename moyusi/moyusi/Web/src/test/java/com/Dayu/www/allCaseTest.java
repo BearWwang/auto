@@ -63,7 +63,8 @@ public  void test2() throws FileNotFoundException, IOException, InterruptedExcep
 			System.out.println(result1+testCaseName+".xlsx");
 			if(!singleTest.exists()){
 				System.out.println("文件"+testCaseName+"不存在");
-				return;			}		
+				return;
+				}		
 			singleCaseProcess sCP = new singleCaseProcess();
 			System.out.print("测试用例：【"+testCaseName+"】  文件读取成功!  --------"+"  准备开始测试!\n");
 			Reporter.log("测试用例：【"+testCaseName+"】  文件读取成功!  --------"+"  准备开始测试!\n");			
