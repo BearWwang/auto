@@ -33,9 +33,9 @@ public void setUp() throws Exception {
 	        option.addArguments("disable-infobars");
               driver = new ChromeDriver(option);
               // 操作浏览器大小, 最大化
-       //  driver.manage().window().maximize();
+         driver.manage().window().maximize();
               //自定义浏览器尺寸
-              driver.manage().window().setSize(new Dimension(1280,800));
+             // driver.manage().window().setSize(new Dimension(1280,800));
               driver.get(Testr.str7); 
 	     }  
 @Test

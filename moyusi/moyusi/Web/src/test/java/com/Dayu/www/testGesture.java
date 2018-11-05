@@ -28,10 +28,11 @@ public class testGesture {
     		((JavascriptExecutor) driver).executeScript("document.documentElement.scrollLeft="+ "1000");  
     		break;
     	case"向上滑动":
+    		Thread.sleep(2000);
     		((JavascriptExecutor) driver).executeScript("document.documentElement.scrollTop=0");
     		break;
     	case "向下滑动":
-    		Thread.sleep(3000);
+    		Thread.sleep(2000);
     		((JavascriptExecutor) driver).executeScript("document.documentElement.scrollTop="+ "500");  
     		Thread.sleep(1000);
     		break;
