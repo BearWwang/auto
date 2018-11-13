@@ -1,20 +1,9 @@
 
 package com.Dayu.www;
-import java.awt.List;
-import java.util.ArrayList;
 import java.util.Set;
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.*;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import com.google.common.base.Verify;
-
-import io.appium.java_client.android.AndroidDriver;
-
-import org.openqa.selenium.firefox.FirefoxProfile;
 
 public class warpingFunctions {
 	public static boolean ever_True=false; //用于在对if-else句式进行解析时，记录之前是否已经有过条件被满足，特定步骤被执行的情况

@@ -50,6 +50,8 @@ public class singleCaseProcess {
 	int regNewPhoneNumber = 0;
 	int cunt =0;
 	int  Rand = 0 ;
+	private static int min=10000000;
+	private static int max=99999999;
 
 	excelOperation excel = new excelOperation();
 	Testr test1=new Testr();
@@ -105,8 +107,21 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 				else //否则清空错误日志，用例步骤顺序执行
 				{
 					resultMessage = "";		
-					SimpleDateFormat dateFormat = new SimpleDateFormat("HHmmss");
-					Rand = new  Random().nextInt(99999999); 
+					
+					
+					
+					//获取当前时间格式：yyyy-MM-dd HH:mm:ss
+					SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");	
+					Date date = new Date();//取时间 
+				    Calendar calendar1  =   Calendar.getInstance();				 
+				    calendar1.setTime(date); //需要将date数据转移到Calender对象中操作
+				  
+					//获取当前时间格式：HHmmss
+					SimpleDateFormat dateFormat = new SimpleDateFormat("HHmmss");					
+					
+					// 随机函数 8位
+					Rand= new Random().nextInt(max)%(max-min+1) +min;							
+					
 					switch (value[0]){					
 					case "F12":
 						try
@@ -114,6 +129,20 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 							Robot rbt = new Robot();							
 							rbt.keyPress(KeyEvent.VK_F12);
 				            rbt.keyRelease(KeyEvent.VK_F12);
+						}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);//写入单个测试用例单个步骤的执行结果
+						break;
+					case "回车":
+						try
+						{   
+							Robot rbt = new Robot();							
+							rbt.keyPress(KeyEvent.VK_ENTER);
+				            rbt.keyRelease(KeyEvent.VK_ENTER);
 						}
 						catch(Exception e)
 						{
@@ -217,6 +246,18 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						}
 						excel.writeResult(value[4], resultMessage);//写入单个测试用例单个步骤的执行结果
 						break;
+					case "上传图片":
+						try
+						{
+							Runtime.getRuntime().exec(value[3]);						
+						}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;
 //					case "支付截图":
 //						try {
 //							FileUtil.takeTakesScreenshot(driver);
@@ -278,7 +319,6 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						catch(Exception e)
 						{
 							resultMessage=e.getMessage();							
-							//investorLogin.invesTag="fail";
 							caseExecResult="failure";
 						}
 			           excel.writeResult(value[4], resultMessage);
@@ -312,14 +352,12 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 							List<WebElement>	 bot = driver.findElements(By.id(value[1]));//driver.findElementsByAndroidUIAutomator("new UiSelector().text(\"消费\")");	
 							for (int j = 0; j <bot.size() ; j++) {		
 					           if (bot.get(j).getAttribute("text").contains(value[6])) {
-					        	  // System.out.println(bot.get(j).getAttribute("text")+"~~~~~~~~~~~~~~~~~~~~~~~~~~");
 					        	   bot.get(j).click();	     	   
 							}		
 					           }}else {
 					        	   List<WebElement>	 bot = driver.findElements(By.id(value[1]));//driver.findElementsByAndroidUIAutomator("new UiSelector().text(\"消费\")");	
 									for (int j = 0; j < value.length; j++) {		
 							           if (bot.get(Integer.parseInt(value[2])).getAttribute("text").contains(value[6])) {
-							        	//   System.out.println(bot.get(Integer.parseInt(value[2])).getAttribute("text")+"~~~~~~~~~~~~~~~~~~~~~~~~~~");
 							        	   bot.get(Integer.parseInt(value[2])).click();							        	   
 					           }
 					        	   }
@@ -442,7 +480,7 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 				              rbt.keyRelease(KeyEvent.VK_A);
 				              //操作删除键
 				              rbt.keyPress(KeyEvent.VK_BACK_SPACE);	
-				              rbt.keyRelease(KeyEvent.VK_BACK_SPACE);				              	
+				              rbt.keyRelease(KeyEvent.VK_BACK_SPACE);			             	
 							
 						}catch (Exception e) {
 							resultMessage=e.getMessage();
@@ -471,19 +509,7 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						}
 						excel.writeResult(value[4], resultMessage);
 						break;
-						
-					case "上传图片":
-						try
-						{
-							Runtime.getRuntime().exec(value[3]);						
-						}
-						catch(Exception e)
-						{
-							resultMessage=e.getMessage();
-							caseExecResult="failure";
-						}
-						excel.writeResult(value[4], resultMessage);
-						break;
+				
 					case "输入_xpaths手机号":
 						try
 						{ 
@@ -492,6 +518,7 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 							if(value[2].equals("")){
 								driver.findElement(By.xpath(value[1])).clear();
 								driver.findElement(By.xpath(value[1])).sendKeys(value[3]+Rand);
+							
 							}
 							else{
 								wait.until(ExpectedConditions.elementToBeClickable(By.xpath(value[1])));
@@ -506,7 +533,101 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						}
 						excel.writeResult(value[4], resultMessage);
 						break;
-						
+					case "输入_xpath推后5天时间":
+						try
+						{ 
+							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定
+							wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(value[1])));
+							calendar1.add(calendar1.DATE, 5);//把日期往后增加n天.正数往后推,负数往前移动 
+						    date=calendar1.getTime();   //这个时间就是日期往后推一天的结果 
+							if(value[2].equals("")){					
+								driver.findElement(By.xpath(value[1])).clear();
+								driver.findElement(By.xpath(value[1])).sendKeys(dateFormat1.format(date));
+								
+							}
+							else{
+								wait.until(ExpectedConditions.elementToBeClickable(By.xpath(value[1])));
+								List<WebElement> bot = driver.findElements(By.xpath(value[1]));	
+								bot.get(Integer.parseInt(value[2])).sendKeys(dateFormat1.format(date));
+							}
+						}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;	
+					case "输入_xpath推后1个月时间":
+						try
+						{ 
+							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定
+							wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(value[1])));
+							calendar1.add(calendar1.MONTH, 1);//把日期往后增加n天.正数往后推,负数往前移动 
+						    date=calendar1.getTime();   //这个时间就是日期往后推一天的结果 
+							if(value[2].equals("")){					
+								driver.findElement(By.xpath(value[1])).clear();
+								driver.findElement(By.xpath(value[1])).sendKeys(dateFormat1.format(date));
+								
+							}
+							else{
+								wait.until(ExpectedConditions.elementToBeClickable(By.xpath(value[1])));
+								List<WebElement> bot = driver.findElements(By.xpath(value[1]));	
+								bot.get(Integer.parseInt(value[2])).sendKeys(dateFormat1.format(date));
+							}
+						}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;	
+					
+					case "输入_xpath当天":
+						try
+						{ 
+							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定
+							wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(value[1])));						
+							if(value[2].equals("")){					
+								driver.findElement(By.xpath(value[1])).clear();
+								driver.findElement(By.xpath(value[1])).sendKeys(dateFormat1.format(date));								
+							}
+							else{
+								wait.until(ExpectedConditions.elementToBeClickable(By.xpath(value[1])));
+								List<WebElement> bot = driver.findElements(By.xpath(value[1]));	
+								bot.get(Integer.parseInt(value[2])).sendKeys(dateFormat1.format(date));
+							}
+						}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;					
+					case "输入_xpathtime":
+						try
+						{ 
+							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定
+							wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(value[1])));
+							if(value[2].equals("")){
+								driver.findElement(By.xpath(value[1])).clear();
+								driver.findElement(By.xpath(value[1])).sendKeys(value[3]+"-"+dateFormat.format(new Date()));
+							}
+							else{
+								wait.until(ExpectedConditions.elementToBeClickable(By.xpath(value[1])));
+								List<WebElement> bot = driver.findElements(By.xpath(value[1]));	
+								bot.get(Integer.parseInt(value[2])).sendKeys(value[3]+"-"+dateFormat.format(new Date()));
+							}
+						}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;						
 					case "输入_xpath":
 						try
 						{
@@ -519,6 +640,7 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 							else{
 								wait.until(ExpectedConditions.elementToBeClickable(By.xpath(value[1])));
 								List<WebElement> bot = driver.findElements(By.xpath(value[1]));	
+								bot.get(Integer.parseInt(value[2])).clear();
 								bot.get(Integer.parseInt(value[2])).sendKeys(value[3]);
 							}
 						}
@@ -599,6 +721,78 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						}
 						excel.writeResult(value[4], resultMessage);
 						break;
+					case "输入_classname推迟1个月":
+						try
+						{  
+							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定	
+							   calendar1.add(calendar1.MONTH,1);//把日期往后增加n天.正数往后推,负数往前移动 
+							    date=calendar1.getTime();   //这个时间就是日期往后推一天的结果 		
+						if(value[2].equals("")){
+							wait.until(ExpectedConditions.elementToBeClickable(By.className(value[1])));
+							driver.findElement(By.className(value[1])).clear();
+							driver.findElement(By.className(value[1])).sendKeys(dateFormat1.format(date));
+						}
+						else{
+							wait.until(ExpectedConditions.elementToBeClickable((By.className(value[1]))));
+							List<WebElement> 	bot = driver.findElements(By.className(value[1]));
+							bot.get(Integer.parseInt(value[2])).clear();
+							bot.get(Integer.parseInt(value[2])).sendKeys(dateFormat1.format(date));
+						}}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;
+					case "输入_classname推迟5天":
+						try
+						{  
+							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定	
+							   calendar1.add(calendar1.DATE, 5);//把日期往后增加n天.正数往后推,负数往前移动 
+							    date=calendar1.getTime();   //这个时间就是日期往后推一天的结果 		
+						if(value[2].equals("")){
+							wait.until(ExpectedConditions.elementToBeClickable(By.className(value[1])));
+							driver.findElement(By.className(value[1])).clear();
+							driver.findElement(By.className(value[1])).sendKeys(dateFormat1.format(date));
+						}
+						else{
+							wait.until(ExpectedConditions.elementToBeClickable((By.className(value[1]))));
+							List<WebElement> 	bot = driver.findElements(By.className(value[1]));
+							bot.get(Integer.parseInt(value[2])).clear();
+							bot.get(Integer.parseInt(value[2])).sendKeys(dateFormat1.format(date));
+						}}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;
+					case "输入_classname当天":
+						try
+						{  
+							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定	
+							 //  calendar1.add(calendar1.DATE, 5);//把日期往后增加n天.正数往后推,负数往前移动 
+							  //  date=calendar1.getTime();   //这个时间就是日期往后推一天的结果 		
+						if(value[2].equals("")){
+							wait.until(ExpectedConditions.elementToBeClickable(By.className(value[1])));
+							driver.findElement(By.className(value[1])).clear();
+							driver.findElement(By.className(value[1])).sendKeys(dateFormat1.format(date));
+						}
+						else{
+							wait.until(ExpectedConditions.elementToBeClickable((By.className(value[1]))));
+							List<WebElement> 	bot = driver.findElements(By.className(value[1]));
+							bot.get(Integer.parseInt(value[2])).clear();
+							bot.get(Integer.parseInt(value[2])).sendKeys(dateFormat1.format(date));
+						}}
+						catch(Exception e)
+						{
+							resultMessage=e.getMessage();
+							caseExecResult="failure";
+						}
+						excel.writeResult(value[4], resultMessage);
+						break;
 					case "输入_classname":
 						try
 						{  
@@ -632,7 +826,7 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 							//原点 + 预计经历天数
 							Date dd = DateUtils.addDays(d,Integer.valueOf(value[3]));  	
 							//时间格式化
-							SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");																	
+																							
 						if(value[2].equals("")){
 							wait.until(ExpectedConditions.elementToBeClickable(By.className(value[1])));
 							driver.findElement(By.className(value[1])).clear();							
@@ -655,7 +849,6 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						try
 						{
 							WebDriverWait wait = new WebDriverWait(driver, maxWaitTime);//最多等待时间由maxWaitTime指定				
-							
 							if(value[2].equals("")){
 							wait.until(ExpectedConditions.elementToBeClickable(By.className(value[1])));
 							driver.findElement(By.className(value[1])).clear();							
