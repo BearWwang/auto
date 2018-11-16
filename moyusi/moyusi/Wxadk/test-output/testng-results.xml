@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[测试用例：【wx-登录】  文件读取成功!  --------  准备开始测试!
+]]>
+    </line>
+    <line>
+      <![CDATA[2018-11-16 :15:04:59  编号  1:  ----------触发-等待页面加载----------成功跑通]]>
+    </line>
+    <line>
+      <![CDATA[2018-11-16 :15:05:41  编号  28:  ----------if结束----------成功跑通]]>
+    </line>
+    <line>
+      <![CDATA[2018-11-16 :15:05:44  编号  29:  ----------检查点-微信----------成功跑通]]>
+    </line>
+    <line>
+      <![CDATA[2018-11-16 :15:05:47  编号  30:  ----------检查点-通讯录----------成功跑通]]>
+    </line>
+    <line>
+      <![CDATA[2018-11-16 :15:05:49  编号  31:  ----------检查点-发现----------成功跑通]]>
+    </line>
+    <line>
+      <![CDATA[2018-11-16 :15:05:52  编号  32:  ----------检查点-我----------成功跑通]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="74446" started-at="2018-11-16T07:04:38Z" finished-at="2018-11-16T07:05:52Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="74446" started-at="2018-11-16T07:04:38Z" finished-at="2018-11-16T07:05:52Z">
+      <class name="com.Dayu.wx.www.allCaseTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.Dayu.wx.www.allCaseTest@4524411f]" name="setUp" is-config="true" duration-ms="14130" started-at="2018-11-16T07:04:38Z" finished-at="2018-11-16T07:04:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="test2()[pri:0, instance:com.Dayu.wx.www.allCaseTest@4524411f]" name="test2" duration-ms="60294" started-at="2018-11-16T07:04:52Z" finished-at="2018-11-16T07:05:52Z">
+          <reporter-output>
+            <line>
+              <![CDATA[测试用例：【wx-登录】  文件读取成功!  --------  准备开始测试!
+]]>
+            </line>
+            <line>
+              <![CDATA[2018-11-16 :15:04:59  编号  1:  ----------触发-等待页面加载----------成功跑通]]>
+            </line>
+            <line>
+              <![CDATA[2018-11-16 :15:05:41  编号  28:  ----------if结束----------成功跑通]]>
+            </line>
+            <line>
+              <![CDATA[2018-11-16 :15:05:44  编号  29:  ----------检查点-微信----------成功跑通]]>
+            </line>
+            <line>
+              <![CDATA[2018-11-16 :15:05:47  编号  30:  ----------检查点-通讯录----------成功跑通]]>
+            </line>
+            <line>
+              <![CDATA[2018-11-16 :15:05:49  编号  31:  ----------检查点-发现----------成功跑通]]>
+            </line>
+            <line>
+              <![CDATA[2018-11-16 :15:05:52  编号  32:  ----------检查点-我----------成功跑通]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.Dayu.wx.www.allCaseTest@4524411f]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-16T07:05:52Z" finished-at="2018-11-16T07:05:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.Dayu.wx.www.allCaseTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
