@@ -42,7 +42,10 @@ public void setUp() throws Exception {
 public  void test2() throws FileNotFoundException, IOException, InterruptedException{
     String result3= Testr.str3;
     String result1= Testr.str1;
+    //执行机
    allTest = new File(result3+"WEB测试用例集.xlsx");   
+    //本地
+   //allTest = new File(result3+"WEB测试用例集-本地.xlsx"); 
 	if(!allTest.exists()){
 		System.out.println("测试用例集文件不存在");
 		return;

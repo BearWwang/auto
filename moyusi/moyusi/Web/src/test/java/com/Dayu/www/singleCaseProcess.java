@@ -408,6 +408,7 @@ public void processHandle(File file ,WebDriver driver, String testCaseName) thro
 						{
 							resultMessage=e.getMessage();
 							caseExecResult="failure";
+						
 						}
 						excel.writeResult(value[4], resultMessage);
 						break;					
